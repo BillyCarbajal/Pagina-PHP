@@ -7,7 +7,7 @@
                     <option value="<?= $opcion['id_producto'] ?>"><?= $opcion['nombre'] ?></option>
                 <?php endforeach; ?>
             </select>
-            <button class="btn btn-outline-secondary" type="submit">Button</button>
+            <button class="btn btn-outline-secondary" type="submit">Buscar</button>
         </div>
     </form>
     <br>
