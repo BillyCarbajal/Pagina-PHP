@@ -117,20 +117,19 @@ class UserController
                 } else if ($_GET['id'] == "editproducto") {
                     $pDAO = new ProductoDAO();
                     $datos = array();
-                    $datos[0] = $pDAO->getAllProducts();
-                    
+                    $datos1 = array();
+                    $datos = $pDAO->getAllProducts();
                     if (isset($_POST['idproducto'])) {
-
                         $pDAO = new ProductoDAO();
-                        $datos[1] = $pDAO->getProductById($_POST['idproducto']);
-                        View::showadmin("editproducto", $datos);
+                        $datos1 = $pDAO->getProductById($_POST['idproducto']);
+                        View::showadmin("editproducto", $datos,$datos1);
                     } else if (isset($_POST['modificarproducto'])) {
                         $pDAO = new ProductoDAO();
                         $pDAO->modificarProducto($_POST['id_producto'], $_POST['nombre'], $_POST['descripcion'], $_POST['precio'], $_POST['foto']);
-                        $datos[1]['general'] ="Producto modificado";
-                        View::showadmin("editproducto", $datos);
+                        $datos1['general'] ="Producto modificado";
+                        View::showadmin("editproducto", $datos,$datos1);
                     } else {
-                        View::showadmin("editproducto",$datos);
+                        View::showadmin("editproducto",$datos,$datos1);
                     }
                 } else if ($_GET['id'] == "delproducto") {
                     $productos = array();

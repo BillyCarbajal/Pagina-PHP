@@ -8,7 +8,7 @@
                             <h2 class="fw-bold mb-2 text-uppercase">Registrarse</h2>
                             <div class="form-outline form-white mb-4">
                                 <label class="form-label">Usuario</label>
-                                <input required value="<?php if (isset($_POST['nombre'])) : echo $_POST['nombre'];
+                                <input value="<?php if (isset($_POST['nombre'])) : echo $_POST['nombre'];
                                                         endif; ?>" type="text" name="nombre" class="form-control form-control-lg" />
                                 <?php
                                 if (isset($data['nombre']))
@@ -19,21 +19,21 @@
                             </div>
                             <div class="form-outline form-white mb-4">
                                 <label class="form-label">Contraseña</label>
-                                <input required type="password" name="password1" class="form-control form-control-lg" />
+                                <input type="password" name="password1" class="form-control form-control-lg" />
                                 <?php
-                                if (isset($data['password']))
+                                if (isset($data['password1']))
                                     echo "<div class='alert alert-danger'>"
-                                        . $data['password'] .
+                                        . $data['password1'] .
                                         "</div>";
                                 ?>
                             </div>
                             <div class="form-outline form-white mb-4">
                                 <label class="form-label">Repita la contraseña</label>
-                                <input required type="password" name="password2" class="form-control form-control-lg" />
+                                <input type="password" name="password2" class="form-control form-control-lg" />
                                 <?php
-                                if (isset($data['password']))
+                                if (isset($data['password2']))
                                     echo "<div class='alert alert-danger'>"
-                                        . $data['password'] .
+                                        . $data['password2'] .
                                         "</div>";
                                 ?>
                             </div>

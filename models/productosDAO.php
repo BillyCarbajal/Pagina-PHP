@@ -73,11 +73,8 @@ class ProductoDAO
     }
     public function buscarproductos($buscar)
     {
-        
         $palabras = explode('+', $buscar);
-
         $consulta = "";
-
         $primer = false;
         foreach ($palabras as $palabra) {
             if ($palabra != "") {

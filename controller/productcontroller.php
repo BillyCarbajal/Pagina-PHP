@@ -13,12 +13,12 @@ class ProductController
      * Método que obtiene todos los productos de la BBDD y los muestra a través de la vista showProducts.
      */
 
-    public function getProduct($id)
+    public function getProduct()
     {
         require_once("models/productosDAO.php");
         $previousPage = $_SERVER['HTTP_REFERER'];
         $pDAO = new ProductoDAO();
-        $product = $pDAO->getProductById($id);
+        $product = $pDAO->getProductById($_GET['id']);
         $pDAO = null;
         if ($product != "") {
             View::show("producto", $product);
@@ -69,12 +69,16 @@ class ProductController
     public function buscarproducto()
     {
         $frase_buscar = preg_replace('/[^a-zA-Z0-9]/', '+', $_GET['id']);
-        if (isset($_GET['id']) && $_GET['id'] != "") {
+        if (isset($_GET['id']) && $_GET['id'] != "" && str_replace('+', '',$frase_buscar) != "" ) {
             $pDAO = new ProductoDAO();
             $uno = array();
             $uno = $pDAO->buscarproductos($frase_buscar);
-            if(count($uno) > 0) {
-            View::show("default", $uno);
+            if ($uno) {
+                if (count($uno) > 0) {
+                    View::show("default", $uno);
+                } else {
+                    header("Location: index.php");
+                }
             } else {
                 header("Location: index.php");
             }

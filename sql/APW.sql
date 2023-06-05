@@ -29,7 +29,7 @@ CREATE TABLE `productos_pedidos` (
 
 );
 
-
+insert into usuarios (usuario,password,rol) values ('admin','admin','admin');
 
 INSERT INTO productos (nombre, descripcion, precio,imagen) VALUES
 ('iPhone 12 Pro', 'Smartphone de Apple con cámara triple y pantalla OLED', 1099.99,'iphone12pro.jpg'),

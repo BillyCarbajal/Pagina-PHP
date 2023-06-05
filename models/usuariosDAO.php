@@ -12,7 +12,6 @@ class UsuariosDAO
         $this->db_con = Database::connect();
     }
 
-
     //Le pasas un id y te devuelve todos los datos del usuario que tenga ese ID
     public function getUsuarioById($id)
     {

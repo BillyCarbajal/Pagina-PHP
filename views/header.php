@@ -6,71 +6,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/styles.css">
     <title>Principal</title>
-    <style>
-        .card {
-            border-color: gray;
-            border-radius: 20px;
-        }
-
-        .card-img-top {
-            border-radius: 20px 20px 0 0;
-        }
-
-        .boton-redondeado {
-            border-radius: 20px;
-            margin-bottom: -10px;
-        }
-
-        .elementos-sin-bordes {
-            margin: 0px;
-            padding: 0px;
-            width: 300px;
-        }
-
-        .ratio {
-            position: relative;
-            width: 100%;
-        }
-
-        .ratio img {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .ratio:before {
-            content: "";
-            display: block;
-            padding-top: 100%;
-        }
-
-        .altura-minima {
-            min-height: 500px;
-        }
-
-        .scroll-container {
-            height: 500px;
-            overflow-y: auto;
-        }
-
-        .header {
-            min-height: 60px;
-        }
-
-        .bordesuperior {
-            margin-top: 60px;
-        }
-
-        .sticky {
-            position: sticky;
-            align-items: center;
-            bottom: 0;
-        }
-    </style>
+    
 </head>
 
 <body>
@@ -105,8 +43,7 @@
                 <form method="get" class="d-flex" action="index.php?controller=ProductController&action=buscarproducto" role="search">
                     <input class="form-control me-2" name="id" type="search" placeholder="Buscar" aria-label="Search">
                     <input type="hidden" name="controller" value="ProductController">
-                     <!--   <input type="hidden" name="action" value="getProduct">-->
-                        <input type="hidden" name="action" value="buscarproducto">
+                    <input type="hidden" name="action" value="buscarproducto">
                     <button class="btn btn-outline-success" type="submit">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
                             <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
@@ -145,7 +82,4 @@
             </div>
         </div>
     </div>
-    
     <div class="bordesuperior">
-        <?php print_r($_GET);
-        print_r($_SESSION['mensaje']); ?>

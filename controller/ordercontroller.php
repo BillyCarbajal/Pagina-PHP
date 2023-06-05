@@ -10,6 +10,9 @@ class OrderController
 {
     public function addToCesta()
     {
+        if (!isset($_SESSION['cesta'])) {
+            $_SESSION['cesta'] = array();
+        }
         $id = $_POST['id_producto'];
         $previousPage = $_SERVER['HTTP_REFERER'];
         if (!empty($_SESSION['cesta'])) {
@@ -37,11 +40,14 @@ class OrderController
     }
     public function getCesta()
     {
+        if (!isset($_SESSION['cesta'])) {
+            $_SESSION['cesta'] = array();
+        }
         require_once("models/productosDAO.php");
-        $slice = $_SESSION['cesta'];
+        $cesta = $_SESSION['cesta'];
         $intance = new ProductoDAO();
         $productos = array();
-        foreach ($slice as $producto_id) {
+        foreach ($cesta as $producto_id) {
             $producto = $intance->getProductById($producto_id[0]);
             array_push($productos, array($producto, $producto_id[1]));
         }
@@ -58,8 +64,10 @@ class OrderController
                 $user1 = $_SESSION['id_user'];
                 $intance->addPedido($user1, $pedidos);
                 $_SESSION['cesta'] = array();
+                $_SESSION['mensaje'] = "Pedido realizado";
                 header("Location: index.php");
             } else {
+                $_SESSION['mensaje'] = "La cesta esta vacia";
                 header("Location: index.php");
             }
         } else {
@@ -78,8 +86,9 @@ class OrderController
             header("Location: $previousPage");
         }
     }
-    public function aumentarPedido($id)
+    public function aumentarPedido()
     {
+        $id = $_GET['id'];
         $previousPage = $_SERVER['HTTP_REFERER'];
         $contador = -1;
         foreach ($_SESSION['cesta'] as $articulo) {
@@ -93,8 +102,9 @@ class OrderController
         }
         header("Location: $previousPage");
     }
-    public function reducirPedido($id)
+    public function reducirPedido()
     {
+        $id = $_GET['id'];
         $previousPage = $_SERVER['HTTP_REFERER'];
         $contador = -1;
         foreach ($_SESSION['cesta'] as $articulo) {
