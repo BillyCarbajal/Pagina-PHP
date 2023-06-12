@@ -25,8 +25,7 @@ CREATE TABLE `productos_pedidos` (
   `id_pedido` int(5) NOT NULL,
   `id_producto` int(5) NOT NULL,
   `cantidad` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id_pedido`,`id_producto`),
-
+  PRIMARY KEY (`id_pedido`,`id_producto`)
 );
 
 insert into usuarios (usuario,password,rol) values ('admin','admin','admin');
